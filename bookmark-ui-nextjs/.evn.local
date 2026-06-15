@@ -1,0 +1,4 @@
+#컨테이너 내부 네트워크 주소 사용 가능
+SERVER_SIDE_API_BASE_URL=http://bookmarker-api:8080
+#브라우저가 접근 가능한 주소
+NEXT_PUBLIC_CLIENT_SIDE_API_BASE_URL=http://localhost:18080
