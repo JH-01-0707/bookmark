@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: bookmarker-api
+    version: "1.0"
+  name: bookmarker-api
+spec:
+  containers:
+    - image: lucas0429/bookmarker-api
+      name: bookmarker-api
+      ports:
+        - containerPort: 8080
+#      resources: {}
+#  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+#status: {}

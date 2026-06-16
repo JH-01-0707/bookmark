@@ -7,7 +7,7 @@ metadata:
   name: bookmarker-api
 spec:
   containers:
-    - image: lucas0429/bookmarker-api
+    - image: jinhyeon01/bookmarker-api
       name: bookmarker-api
       ports:
         - containerPort: 8080

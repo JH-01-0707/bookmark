@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bookmarker-api
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: bookmarker-api
+ 
+  template:
+    metadata:
+      labels:
+        app: bookmarker-api
+
+    spec:
+      containers:
+      - name: bookmarker-api
+        image: jinhyeon01/bookmarker-api:latest
+        ports:
+          - containerPort: 8080
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_host
+
+          - name: DB_HOST
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_host
+
+          - name: DB_PORT
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_port
+
+          - name: DB_DATABASE
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_dbname
+
+          - name: DB_USERNAME
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_username
+
+          - name: DB_PASSWORD
+            valueFrom:
+                configMapKeyRef: 
+                  name: bookmaker-conifg
+                  key: postgres_password
+        
+      

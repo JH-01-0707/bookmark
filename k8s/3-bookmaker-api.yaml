@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bookmarker-api
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: bookmarker-api
+ 
+  template:
+    metadata:
+      labels:
+        app: bookmarker-api
+
+    spec:
+      containers:
+      - name: bookmarker-api
+        image: jinhyeon01/bookmarker-api:latest
+        ports:
+          - containerPort: 8080
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+        
+      
